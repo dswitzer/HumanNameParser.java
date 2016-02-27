@@ -1,31 +1,62 @@
-Björn O'Malley| | Björn| | | O'Malley| 
-Bin Lin| | Bin| | | Lin| 
-Linda Jones| | Linda| | | Jones| 
-Jason H. Priem| | Jason| | H.| Priem| 
-Björn O'Malley-Muñoz| | Björn| | | O'Malley-Muñoz| 
-Björn C. O'Malley| | Björn| | C.| O'Malley| 
-Björn "Bill" O'Malley| | Björn| Bill| | O'Malley| 
-Björn ("Bill") O'Malley| | Björn| Bill| | O'Malley| 
-Björn ("Wild Bill") O'Malley| | Björn| Wild Bill| | O'Malley| 
-Björn (Bill) O'Malley| | Björn| Bill| | O'Malley| 
-Björn 'Bill' O'Malley| | Björn| Bill| | O'Malley| 
-Björn C O'Malley| | Björn| | C| O'Malley| 
-Björn C. R. O'Malley| | Björn| | C. R.| O'Malley| 
-Björn Charles O'Malley| | Björn| | Charles| O'Malley| 
-Björn Charles R. O'Malley| | Björn| | Charles R.| O'Malley| 
-Björn van O'Malley| | Björn| | | van O'Malley| 
-Björn Charles van der O'Malley| | Björn| | Charles| van der O'Malley| 
-Björn Charles O'Malley y Muñoz| | Björn| | Charles| O'Malley y Muñoz| 
-Björn O'Malley, Jr.| | Björn| | | O'Malley| Jr.
-Björn O'Malley Jr| | Björn| | | O'Malley| Jr
-B O'Malley| | B| | | O'Malley| 
-William Carlos Williams| | William| | Carlos| Williams| 
-C. Björn Roger O'Malley| C.| Björn| | Roger| O'Malley| 
-B. C. O'Malley| | B.| | C.| O'Malley| 
-B C O'Malley| | B| | C| O'Malley| 
-B.J. Thomas| | B.J.| | | Thomas| 
-O'Malley, Björn| | Björn| | | O'Malley| 
-O'Malley, Björn Jr| | Björn| | | O'Malley| Jr
-O'Malley, C. Björn| C.| Björn| | | O'Malley| 
-O'Malley, C. Björn III| C.| Björn| | | O'Malley| III
-O'Malley y Muñoz, C. Björn Roger III| C.| Björn| | Roger| O'Malley y Muñoz| III
+Björn O'Malley| | | Björn| | | O'Malley| |
+Bin Lin| | | Bin| | | Lin| |
+Linda Jones| | | Linda| | | Jones| |
+Jason H. Priem| | | Jason| | H.| Priem| |
+Björn O'Malley-Muñoz| | | Björn| | | O'Malley-Muñoz| |
+Björn C. O'Malley| | | Björn| | C.| O'Malley| |
+Björn "Bill" O'Malley| | | Björn| Bill| | O'Malley| |
+Björn ("Bill") O'Malley| | | Björn| Bill| | O'Malley| |
+Björn ("Wild Bill") O'Malley| | | Björn| Wild Bill| | O'Malley| |
+Björn (Bill) O'Malley| | | Björn| Bill| | O'Malley| |
+Björn 'Bill' O'Malley| | | Björn| Bill| | O'Malley| |
+Björn C O'Malley| | | Björn| | C| O'Malley| |
+Björn C. R. O'Malley| | | Björn| | C. R.| O'Malley| |
+Björn Charles O'Malley| | | Björn| | Charles| O'Malley| |
+Björn Charles R. O'Malley| | | Björn| | Charles R.| O'Malley| |
+Björn van O'Malley| | | Björn| | | van O'Malley| |
+Björn Charles van der O'Malley| | | Björn| | Charles| van der O'Malley| |
+Björn Charles O'Malley y Muñoz| | | Björn| | Charles| O'Malley y Muñoz| |
+Björn O'Malley, Jr.| | | Björn| | | O'Malley| Jr.|
+Björn O'Malley Jr| | | Björn| | | O'Malley| Jr|
+B O'Malley| | | B| | | O'Malley| |
+William Carlos Williams| | | William| | Carlos| Williams| |
+C. Björn Roger O'Malley| | C.| Björn| | Roger| O'Malley| |
+B. C. O'Malley| | | B.| | C.| O'Malley| |
+B C O'Malley| | | B| | C| O'Malley| |
+B.J. Thomas| | | B.J.| | | Thomas| |
+O'Malley, Björn| | | Björn| | | O'Malley| |
+O'Malley, Björn Jr| | | Björn| | | O'Malley| Jr|
+O'Malley, C. Björn| | C.| Björn| | | O'Malley| |
+O'Malley, C. Björn III| | C.| Björn| | | O'Malley| III|
+O'Malley y Muñoz, C. Björn Roger III| | C.| Björn| | Roger| O'Malley y Muñoz| III|
+Mr Björn O'Malley| Mr| | Björn| | | O'Malley| |
+Dr. Bin Lin| Dr.| | Bin| | | Lin| |
+Mrs. Linda Jones| Mrs.| | Linda| | | Jones| |
+Sir Jason H. Priem| Sir| | Jason| | H.| Priem| |
+Lord Björn O'Malley-Muñoz| Lord| | Björn| | | O'Malley-Muñoz| |
+Mr. Björn C. O'Malley| Mr.| | Björn| | C.| O'Malley| |
+Det. Björn "Bill" O'Malley| Det.| | Björn| Bill| | O'Malley| |
+Pvt. Björn ("Bill") O'Malley| Pvt.| | Björn| Bill| | O'Malley| |
+Lord Björn ("Wild Bill") O'Malley| Lord| | Björn| Wild Bill| | O'Malley| |
+P.F.C. Björn (Bill) O'Malley| P.F.C.| | Björn| Bill| | O'Malley| |
+Mr. Björn 'Bill' O'Malley| Mr.| | Björn| Bill| | O'Malley| |
+Dr Björn C O'Malley| Dr| | Björn| | C| O'Malley| |
+Cmd Björn C. R. O'Malley| Cmd| | Björn| | C. R.| O'Malley| |
+Cpt Björn Charles O'Malley| Cpt| | Björn| | Charles| O'Malley| |
+Cpl Björn Charles R. O'Malley| Cpl| | Björn| | Charles R.| O'Malley| |
+R.Adm. Björn van O'Malley| R.Adm.| | Björn| | | van O'Malley| |
+Gen Björn Charles van der O'Malley| Gen| | Björn| | Charles| van der O'Malley| |
+Gen. Björn Charles O'Malley y Muñoz| Gen.| | Björn| | Charles| O'Malley y Muñoz| |
+Maj Björn O'Malley, Jr.| Maj| | Björn| | | O'Malley| Jr.|
+Mjr. Björn O'Malley Jr| Mjr.| | Björn| | | O'Malley| Jr|
+Miss B O'Malley| Miss| | B| | | O'Malley| |
+Rev. William Carlos Williams| Rev.| | William| | Carlos| Williams| |
+Rev C. Björn Roger O'Malley| Rev| C.| Björn| | Roger| O'Malley| |
+Lady B. C. O'Malley| Lady| | B.| | C.| O'Malley| |
+His B C O'Malley| His| | B| | C| O'Malley| |
+Her B.J. Thomas| Her| | B.J.| | | Thomas| |
+O'Malley, Mr Björn| Mr| | Björn| | | O'Malley| |
+O'Malley, Mr. Björn Jr| Mr.| | Björn| | | O'Malley| Jr|
+O'Malley, Dr C. Björn| Dr| C.| Björn| | | O'Malley| |
+O'Malley, Dr. C. Björn III| Dr.| C.| Björn| | | O'Malley| III|
+O'Malley y Muñoz, Pvt. C. Björn Roger III| Pvt.| C.| Björn| | Roger| O'Malley y Muñoz| III|

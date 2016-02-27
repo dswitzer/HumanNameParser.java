@@ -42,6 +42,7 @@ import org.apache.commons.lang.StringUtils;
 public class HumanNameParserParser {
 
     private Name name;
+    private String title;
     private String leadingInit;
     private String first;
     private String nicknames;
@@ -49,6 +50,7 @@ public class HumanNameParserParser {
     private String last;
     private String suffix;
 
+    private List<String> titles;
     private List<String> suffixes;
     private List<String> prefixes;
 
@@ -69,6 +71,7 @@ public class HumanNameParserParser {
     public HumanNameParserParser(Name name) {
         this.name = name;
 
+        this.title = "";
         this.leadingInit = "";
         this.first = "";
         this.nicknames = "";
@@ -76,13 +79,137 @@ public class HumanNameParserParser {
         this.last = "";
         this.suffix = "";
 
-        this.suffixes = Arrays.asList(new String[] { "esq", "esquire", "jr",
-            "sr", "2", "ii", "iii", "iv" });
-        this.prefixes = Arrays
-            .asList(new String[] { "bar", "ben", "bin", "da", "dal",
-                "de la", "de", "del", "der", "di", "ibn", "la", "le",
-                "san", "st", "ste", "van", "van der", "van den", "vel",
-                "von" });
+        this.titles = Arrays.asList(new String[] {
+			  "dr."
+			, "doctor"
+			, "mr."
+			, "mister"
+			, "ms."
+			, "miss"
+			, "mrs."
+			, "mistress"
+			, "hn."
+			, "honorable"
+			, "the"
+			, "honorable"
+			, "his"
+			, "her"
+			, "honor"
+			, "fr."
+			, "frau"
+			, "hr."
+			, "herr"
+			, "rv."
+			, "rev."
+			, "reverend"
+			, "madam"
+			, "lord"
+			, "lady"
+			, "sir"
+			, "senior"
+			, "bishop"
+			, "rabbi"
+			, "holiness"
+			, "rebbe"
+			, "deacon"
+			, "eminence"
+			, "majesty"
+			, "consul"
+			, "vice"
+			, "president"
+			, "ambassador"
+			, "secretary"
+			, "undersecretary"
+			, "deputy"
+			, "inspector"
+			, "ins."
+			, "detective"
+			, "det."
+			, "constable"
+			, "private"
+			, "pvt."
+			, "petty"
+			, "p.o."
+			, "private first class"
+			, "p.f.c."
+			, "lcp."
+			, "corporal"
+			, "cpl."
+			, "colonel"
+			, "col."
+			, "captain"
+			, "cpt."
+			, "ensign"
+			, "ens."
+			, "lieutenant"
+			, "lt."
+			, "ltc."
+			, "commander"
+			, "cmd."
+			, "cmdr."
+			, "rear"
+			, "r.adm."
+			, "admiral"
+			, "adm."
+			, "commodore"
+			, "cmd."
+			, "general"
+			, "gen."
+			, "lt.gen."
+			, "maj.gen."
+			, "major"
+			, "maj."
+			, "mjr."
+			, "seargent"
+			, "sgt."
+			, "chief"
+			, "cf."
+			, "petty"
+			, "officer"
+			, "c.p.o."
+			, "master"
+			, "cmc.po."
+			, "flt.mc."
+			, "formc."
+			, "mc.po."
+			, "mc.pocg."
+			, "command"
+			, "fleet"
+			, "force"
+        });
+        this.suffixes = Arrays.asList(new String[] {
+			  "esq"
+			, "esquire"
+			, "jr"
+			, "sr"
+			, "2"
+			, "ii"
+			, "iii"
+			, "iv"
+        });
+        this.prefixes = Arrays.asList(new String[] {
+    		  "bar"
+    		, "ben"
+    		, "bin"
+    		, "da"
+    		, "dal"
+    		, "de la"
+    		, "de"
+    		, "del"
+    		, "der"
+    		, "di"
+    		, "ibn"
+    		, "la"
+    		, "le"
+    		, "san"
+    		, "st"
+    		, "ste"
+    		, "van"
+    		, "van der"
+    		, "van den"
+    		, "vel"
+    		, "von"
+        });
 
         this.parse();
     }
@@ -93,6 +220,10 @@ public class HumanNameParserParser {
      */
     public Name getName() {
         return name;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getLeadingInit() {
@@ -133,42 +264,48 @@ public class HumanNameParserParser {
      * @throws ParseException if the parser fails to retrieve the name parts
      */
     private void parse() throws ParseException {
+    	// build the title regex, but all periods are optional
+    	String titles = ("(" + StringUtils.join(this.titles, ") |(") + ") ").replaceAll("\\.",  "\\\\$0?");
         String suffixes = StringUtils.join(this.suffixes, "\\.*|") + "\\.*";
         String prefixes = StringUtils.join(this.prefixes, " |") + " ";
-        
+
         // The regex use is a bit tricky.  *Everything* matched by the regex will be replaced,
         // but you can select a particular parenthesized submatch to be returned.
         // Also, note that each regex requres that the preceding ones have been run, and matches chopped out.
         String nicknamesRegex = "(?i) ('|\\\"|\\(\\\"*'*)(.+?)('|\\\"|\\\"*'*\\)) "; // names that starts or end w/ an apostrophe break this
+        String titleRegex = "(?i)\\b("+titles+")";
         String suffixRegex = "(?i),* *(("+suffixes+")$)";
         String lastRegex = "(?i)(?!^)\\b([^ ]+ y |"+prefixes+")*[^ ]+$";
         String leadingInitRegex = "(?i)(^(.\\.*)(?= \\p{L}{2}))"; // note the lookahead, which isn't returned or replaced
         String firstRegex = "(?i)^([^ ]+)";
-        
+
         // get nickname, if there is one
         this.nicknames = this.name.chopWithRegex(nicknamesRegex, 2);
-        
+
         // get suffix, if there is one
         this.suffix = this.name.chopWithRegex(suffixRegex, 1);
-        
+
         // flip the before-comma and after-comma parts of the name
         this.name.flip(",");
-        
+
+        // get title (mr, mrs, etc), if there is one
+        this.title = this.name.chopWithRegex(titleRegex, 0);
+
         // get the last name
         this.last = this.name.chopWithRegex(lastRegex, 0);
         if (StringUtils.isBlank(this.last)) {
           throw new ParseException("Couldn't find a last name in '{" + this.name.getStr() + "}'.");
         }
-        
+
         // get the first initial, if there is one
         this.leadingInit = this.name.chopWithRegex(leadingInitRegex, 1);
-        
+
         // get the first name
         this.first = this.name.chopWithRegex(firstRegex, 0);
         if (StringUtils.isBlank(this.first)) {
             throw new ParseException("Couldn't find a first name in '{" + this.name.getStr() + "}'");
         }
-        
+
         // if anything's left, that's the middle name
         this.middle = this.name.getStr();
     }
