@@ -60,3 +60,4 @@ O'Malley, Mr. Björn Jr| Mr.| | Björn| | | O'Malley| Jr|
 O'Malley, Dr C. Björn| Dr| C.| Björn| | | O'Malley| |
 O'Malley, Dr. C. Björn III| Dr.| C.| Björn| | | O'Malley| III|
 O'Malley y Muñoz, Pvt. C. Björn Roger III| Pvt.| C.| Björn| | Roger| O'Malley y Muñoz| III|
+Dr. J. Björn ("JB") Charles O'Malley y Muñoz, Jr.| Dr.| J.| Björn| JB| Charles| O'Malley y Muñoz| Jr.|
