@@ -48,6 +48,7 @@ public class HumanNameParserParser {
     private String nicknames;
     private String middle;
     private String last;
+    private String suffixDelim;
     private String suffix;
 
     private List<String> titles;
@@ -77,6 +78,7 @@ public class HumanNameParserParser {
         this.nicknames = "";
         this.middle = "";
         this.last = "";
+        this.suffixDelim = "";
         this.suffix = "";
 
         this.titles = Arrays.asList(new String[] {
@@ -246,8 +248,36 @@ public class HumanNameParserParser {
         return last;
     }
 
+    private String getSuffixDelim() {
+        return (suffixDelim.length() > 0) ? suffixDelim : " ";
+    }
+
     public String getSuffix() {
         return suffix;
+    }
+
+    /**
+     * Combines a first initial and first name, e.g. "J. Edgar Hoover", would return "J. Edgar"
+     */
+    public String getFullFirst() {
+        return StringUtils.stripStart(getLeadingInit() + " " + getFirst(), null);
+    }
+
+    /**
+     * Combines a last name and suffix, e.g. "Martin Luther King, Jr.", would return "King, Jr."
+     */
+    public String getFullLast() {
+    	StringBuilder lastname = new StringBuilder(getLast());
+    	String suffix = getSuffix();
+
+    	// if we have a suffix, append the original string
+    	if( suffix.length() > 0 ){
+    		// append the original suffix delimiter
+    		lastname.append(getSuffixDelim());
+    		lastname.append(suffix);
+    	}
+
+        return lastname.toString();
     }
 
     public List<String> getSuffixes() {
@@ -268,13 +298,14 @@ public class HumanNameParserParser {
     	String titles = ("(" + StringUtils.join(this.titles, ") |(") + ") ").replaceAll("\\.",  "\\\\$0?");
         String suffixes = StringUtils.join(this.suffixes, "\\.*|") + "\\.*";
         String prefixes = StringUtils.join(this.prefixes, " |") + " ";
+    	String suffixDelimRegex = ",* *";
 
         // The regex use is a bit tricky.  *Everything* matched by the regex will be replaced,
         // but you can select a particular parenthesized submatch to be returned.
         // Also, note that each regex requres that the preceding ones have been run, and matches chopped out.
         String nicknamesRegex = "(?i) ('|\\\"|\\(\\\"*'*)(.+?)('|\\\"|\\\"*'*\\)) "; // names that starts or end w/ an apostrophe break this
         String titleRegex = "(?i)\\b("+titles+")";
-        String suffixRegex = "(?i),* *(("+suffixes+")$)";
+        String suffixRegex = "(?i)(" + suffixDelimRegex + "("+suffixes+")$)";
         String lastRegex = "(?i)(?!^)\\b([^ ]+ y |"+prefixes+")*[^ ]+$";
         String leadingInitRegex = "(?i)(^(.\\.*)(?= \\p{L}{2}))"; // note the lookahead, which isn't returned or replaced
         String firstRegex = "(?i)^([^ ]+)";
@@ -282,8 +313,12 @@ public class HumanNameParserParser {
         // get nickname, if there is one
         this.nicknames = this.name.chopWithRegex(nicknamesRegex, 2);
 
-        // get suffix, if there is one
-        this.suffix = this.name.chopWithRegex(suffixRegex, 1);
+        // get suffix, if there is one--this now has the delim included
+        String suffix = this.name.chopWithRegex(suffixRegex, 1);
+        // get just the suffix delim--we store to use when building the full last name
+        this.suffixDelim = suffix.replaceFirst("(^" + suffixDelimRegex + ")(.*$)", "$1");
+        // remove the suffix delim from the value
+        this.suffix = suffix.substring(this.suffixDelim.length());
 
         // flip the before-comma and after-comma parts of the name
         this.name.flip(",");

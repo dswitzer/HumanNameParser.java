@@ -47,7 +47,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testAll() throws IOException {
+    public void testAllNames() throws IOException {
         BufferedReader buffer = null;
         FileReader reader = null;
 
@@ -76,6 +76,82 @@ public class ParserTest {
             if (buffer != null)
                 buffer.close();
         }
+    }
+
+    @Test
+    public void title_should_allow_optional_periods() throws IOException {
+    	String name = "James Francis Ryan";
+    	String fullname = "";
+    	String[] expected = {
+    	    "PFC"
+    	  , "pfc"
+    	  , "PFC."
+    	  , "pfc."
+    	  , "P.F.C."
+    	  , "p.f.c."
+    	};
+
+    	// test first name first
+    	for( int i=0; i < expected.length; i++ ){
+    		fullname = expected[i] + " " + name;
+            assertEquals(fullname, expected[i], new HumanNameParserParser(fullname).getTitle());
+    	}
+
+    	// test first name last
+    	name = "Ryan, %s James Francis";
+    	for( int i=0; i < expected.length; i++ ){
+    		fullname = String.format(name, expected[i]);
+            assertEquals(fullname, expected[i], new HumanNameParserParser(fullname).getTitle());
+    	}
+
+    }
+
+    @Test
+    public void fullfirst_should_return_leading_initial_and_first_name() throws IOException {
+    	String name = "C. Björn Roger O'Malley";
+    	String expected = "C. Björn";
+
+    	assertEquals(name, expected, new HumanNameParserParser(name).getFullFirst());
+    }
+
+    @Test
+    public void fullfirst_should_return_only_first_name_when_no_initial() throws IOException {
+    	String name = "Björn O'Malley";
+    	String expected = "Björn";
+
+    	assertEquals(name, expected, new HumanNameParserParser(name).getFullFirst());
+    }
+
+    @Test
+    public void fullfirst_should_return_only_leading_initial_when_no_first_name() throws IOException {
+    	String name = "B O'Malley";
+    	String expected = "B";
+
+    	assertEquals(name, expected, new HumanNameParserParser(name).getFullFirst());
+    }
+
+    @Test
+    public void lastname_should_return_only_last_name_when_no_suffix() throws IOException {
+    	String name = "Björn O'Malley";
+    	String expected = "O'Malley";
+
+    	assertEquals(name, expected, new HumanNameParserParser(name).getFullLast());
+    }
+
+    @Test
+    public void lastname_should_return_last_name_and_suffix() throws IOException {
+    	String name = "Björn O'Malley, Jr.";
+    	String expected = "O'Malley, Jr.";
+
+    	assertEquals(name, expected, new HumanNameParserParser(name).getFullLast());
+    }
+
+    @Test
+    public void lastname_should_return_last_name_and_suffix_space_delim() throws IOException {
+    	String name = "Björn O'Malley Jr";
+    	String expected = "O'Malley Jr";
+
+    	assertEquals(name, expected, new HumanNameParserParser(name).getFullLast());
     }
 
     /**
